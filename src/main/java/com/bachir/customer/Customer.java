@@ -1,24 +1,34 @@
 package com.bachir.customer;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.Getter;
 
 import java.util.Objects;
 
 //Entity Class
-@Getter
 @Entity
+@Table(
+        name = "customer",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "customer_unique_email",
+                        columnNames = "email"
+                )
+        }
+)
 public class Customer {
     @Id
     @SequenceGenerator(
-            name = "customer_id_sequence",
-            sequenceName = "customer_id_sequence"
+            name = "customer_id_seq",
+            sequenceName = "customer_id_seq",
+            allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "customer_id_sequence"
+            generator = "customer_id_seq"
     )
-    private Integer id;
+    private Long id;
 
     //Make user column values are not null
     @Column(
@@ -40,8 +50,7 @@ public class Customer {
 
     public Customer() {
     }
-
-    public Customer(Integer id, String name, String email, Integer age) {
+    public Customer(Long id, String name, String email, Integer age) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -53,16 +62,32 @@ public class Customer {
         this.age = age;
     }
 
-    public void setId(Integer id) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getAge() {
+        return age;
     }
 
     public void setAge(Integer age) {
@@ -81,15 +106,4 @@ public class Customer {
     public int hashCode() {
         return Objects.hash(id, name, email, age);
     }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", age=" + age +
-                '}';
-    }
-
 }

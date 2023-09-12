@@ -38,11 +38,10 @@ public class CustomerController {
         customerService.deleteCustomerById(customerID);
     }
 
+    //Update customer based on id
     @PutMapping("{CustomerID}")
     public void updateCustomer(@PathVariable("CustomerID") Integer customerID,
                                @RequestBody CustomerUpdateRequest updateRequest){
         customerService.updateCustomer(customerID, updateRequest);
     }
-
-
 }

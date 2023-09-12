@@ -2,10 +2,13 @@ package com.bachir;
 
 import com.bachir.customer.Customer;
 import com.bachir.customer.CustomerRepository;
+import com.github.javafaker.Faker;
+import com.github.javafaker.Name;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;;import java.util.List;
+import java.util.Random;
 
 @SpringBootApplication
 public class Main {
@@ -18,11 +21,19 @@ public class Main {
     CommandLineRunner runner(CustomerRepository customerRepository){
 
         return args -> {
-            Customer alex = new Customer(1,"Alex","alex@mail.com",22);
-            Customer jamila = new Customer(2,"Jamila","jamila@mail.com",24);
+            Faker faker = new Faker();
+            Random random = new Random();
 
-            List<Customer> customers = List.of(alex, jamila);
-            customerRepository.saveAll(customers);
+            Name name = faker.name();
+            String firstName = name.firstName();
+            String lastName = name.lastName();
+            Customer customer = new Customer(
+                    firstName+" "+lastName,
+                    firstName.toLowerCase()+"."+ lastName.toLowerCase()+"@amigos.com",
+                    random.nextInt(16, 99)
+            );
+
+            customerRepository.save(customer);
         };
     }
 }
