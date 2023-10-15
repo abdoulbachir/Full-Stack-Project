@@ -192,8 +192,6 @@ class CustomerJDBCDataAccessServiceTest extends AbstractTestcontainers {
         assertThat(actual).isNotPresent();
     }
 
-
-
     @Test
     void updateCustomer() {
 

@@ -14,9 +14,8 @@ public class CustomerRowMapper implements RowMapper<Customer> {
     @Override
     public Customer mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        // Create a new Customer object.
-        Customer customer = new Customer(
-
+        // Return a new Customer object.
+        return new Customer(
                 // Get the value of the `id` column from the ResultSet.
                 rs.getLong("id"),
 
@@ -29,8 +28,5 @@ public class CustomerRowMapper implements RowMapper<Customer> {
                 // Get the value of the `age` column from the ResultSet.
                 rs.getInt("age")
         );
-
-        // Return the Customer object.
-        return customer;
     }
 }
