@@ -18,10 +18,10 @@ public class CustomerService {
         this.customerDao = customerDao;
     }
 
-    //Returns a
     public List<Customer> getAllCustomers(){
         return customerDao.selectAllCustomers();
     }
+
      public Customer getCustomer(Integer id){
         return customerDao.selectCustomerById(Long.valueOf(id))
                 .orElseThrow(()->new ResourceNotFoundException("Customer with id [%s] not found".formatted(id)));
