@@ -14,7 +14,7 @@ public class CustomerService {
 
     private final CustomerDao customerDao;
 
-    public CustomerService(@Qualifier("jpa") CustomerDao customerDao) {
+    public CustomerService(@Qualifier("jdbc") CustomerDao customerDao) {
         this.customerDao = customerDao;
     }
 
@@ -23,7 +23,7 @@ public class CustomerService {
         return customerDao.selectAllCustomers();
     }
      public Customer getCustomer(Integer id){
-        return customerDao.selectCustomerById(id)
+        return customerDao.selectCustomerById(Long.valueOf(id))
                 .orElseThrow(()->new ResourceNotFoundException("Customer with id [%s] not found".formatted(id)));
     }
 
