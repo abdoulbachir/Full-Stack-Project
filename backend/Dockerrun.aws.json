@@ -1,0 +1,24 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "bachir-api",
+      "image": "bachir95/bachir.api:latest",
+      "essential": true,
+      "memory": 512,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 8080
+        }
+      ],
+
+      "environment": [
+        {
+          "name": "SPRING_DATASOURCE_URL",
+          "value": "jdbc:postgresql://awseb-e-u8icbg8guh-stack-awsebrdsdatabase-5damusiblbhc.cskgrfoqh5pb.us-east-1.rds.amazonaws.com:5432/customer"
+        }
+      ]
+    }
+  ]
+}
