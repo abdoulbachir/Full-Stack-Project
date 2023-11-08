@@ -1,7 +1,8 @@
 services:
+#  Set up our Postgres database container
   db:
     container_name: postgres
-    image: postgres
+    image: postgres:15.3
     environment:
       POSTGRES_USER: bachir
       POSTGRES_PASSWORD: password
@@ -9,10 +10,24 @@ services:
     volumes:
       - db:/data/postgres
     ports:
-      - "5432:5432"
+      - "5332:5432"
     networks:
       - db
     restart: unless-stopped
+
+#To make sure our containerized application will connect to Postgres database container
+#  bachir-api:
+#    container_name: bachir-api
+#    image: bachir95/bachir.api
+#    environment:
+#      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/customer
+#    ports:
+#      - "8080:8080"
+#    networks:
+#      - db
+#    depends_on:
+#      - db
+#    restart: unless-stopped
 
 networks:
   db:
