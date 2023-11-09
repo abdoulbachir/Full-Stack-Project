@@ -30,7 +30,8 @@ public class CustomerService {
     //Add a customer
     public void addCustomer(CustomerRegistrationRequest customerRegistrationRequest){
         //Check if email exists, if yes then throw exception
-        if (customerDao.existsPersonWithEmail(customerRegistrationRequest.email())){
+        String email = customerRegistrationRequest.email();
+        if (customerDao.existsPersonWithEmail(email)){
             throw new DuplicateResourceException("Email already taken");
         }
 

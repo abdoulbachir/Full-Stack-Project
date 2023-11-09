@@ -1,8 +1,8 @@
 package com.bachir.journey;
 
 import com.bachir.customer.Customer;
-import main.com.bachir.customer.CustomerRegistrationRequest;
-import main.com.bachir.customer.CustomerUpdateRequest;
+import com.bachir.customer.CustomerRegistrationRequest;
+import com.bachir.customer.CustomerUpdateRequest;
 import com.github.javafaker.Faker;
 import com.github.javafaker.Name;
 import org.junit.jupiter.api.Test;

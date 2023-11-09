@@ -72,11 +72,16 @@ public class CustomerJDBCDataAccessService implements CustomerDao {
     public void insertCustomer(Customer customer) {
         // SQL query to insert a new customer.
         final var sql = """
-                INSERT INTO customer(name, email, age) VALUES ( ?, ?, ?)
+                INSERT INTO customer(name, email, age) VALUES (?, ?, ?)
                 """;
         // Inserting a new customer record in the database and logging the operation's result.
-        int result = jdbcTemplate.update(sql, customer.getName(), customer.getEmail(), customer.getAge());
-        System.out.println("jdbcTemplate.update = " + result); // Logging the number of rows affected by the update.
+        int result = jdbcTemplate.update(
+                sql,
+                customer.getName(),
+                customer.getEmail(),
+                customer.getAge());
+
+        System.out.println("insertCustomer result = " + result); // Logging the number of rows affected by the update.
     }
 
     /**
