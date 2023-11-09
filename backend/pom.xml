@@ -182,7 +182,7 @@
 						</platforms>
 					</from>
 					<to>
-						<image>docker.io/${organization.name}/${project.artifactId}:${project.version}</image>
+						<image>docker.io/${project.organization.name}/${project.artifactId}:${project.version}</image>
 <!--						<image>docker.io/${docker.username}/${project.artifactId}:${project.version}</image>-->
 						<tags>
 							<tag>latest</tag>

@@ -33,7 +33,7 @@ public abstract class AbstractTestcontainers {
 
     //Initialize the Postgres container
     @Container //Used to mark a field as a container
-    protected static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:latest")
+    protected static final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>("postgres:15.3")
             .withDatabaseName("bachir-dao-unit-test")
             .withUsername("main/bachir")
             .withPassword("password");
