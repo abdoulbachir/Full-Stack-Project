@@ -161,7 +161,7 @@ $RECYCLE.BIN/
 *.lnk
 
 ### IntelliJ IDEA ###
-.idea
+../.idea/.idea
 *.iws
 *.iml
 *.ipr
@@ -197,5 +197,5 @@ dependency-reduced-pom.xml
 .gradle
 README.html
 *.iml
-.idea
+../.idea/.idea
 .exercism
