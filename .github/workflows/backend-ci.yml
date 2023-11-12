@@ -1,0 +1,46 @@
+name: CI - Build Backend
+
+on:
+  pull_request:
+    branches:
+      - main
+    paths:
+      - backend/**
+
+jobs:
+  # First job to run: build
+  build:
+    runs-on: ubuntu-latest
+    # Service containers to run with this first job: build
+    services:
+      # Label used to access the service container: 'postgres' here
+      postgres:
+        # Docker Hub image
+        image: postgres:15.3
+        # Provide the username, password and create customer db for postgres
+        env:
+          POSTGRES_USER: bachir
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: customer
+        # Port to use. localhost:docker
+        ports:
+          - 5332:5432
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    defaults:
+        run:
+          working-directory: ./backend
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Build and run Unit/Integreation Tests with Maven # If we don't care about name, we can just run '- run: mvn clean install' or '- run: mvn -ntp -B verify' since there is nothing to clean
+        run: mvn -ntp -B verify # ntp(no transfer progress): Do not display transfer process when downloading or uploading. -B(batch mode): Run in non-interactive (batch) mode (disables output color)
