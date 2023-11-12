@@ -19,17 +19,17 @@ import javax.sql.DataSource;
 public abstract class AbstractTestcontainers {
 
     //Before all test methods in a class, apply migration with flyway
-//    @BeforeAll
-//    static void beforeAll() {
-//        // Create a new Flyway object and configure it to use the PostgreSQL database container.
-//        Flyway flyway = Flyway.configure().dataSource(
-//                postgreSQLContainer.getJdbcUrl(),
-//                postgreSQLContainer.getUsername(),
-//                postgreSQLContainer.getPassword()
-//        ).load();
-//        // Execute all pending database migrations
-//        flyway.migrate();
-//    }
+    @BeforeAll
+    static void beforeAll() {
+        // Create a new Flyway object and configure it to use the PostgreSQL database container.
+        Flyway flyway = Flyway.configure().dataSource(
+                postgreSQLContainer.getJdbcUrl(),
+                postgreSQLContainer.getUsername(),
+                postgreSQLContainer.getPassword()
+        ).load();
+        // Execute all pending database migrations
+        flyway.migrate();
+    }
 
     //Initialize the Postgres container
     @Container //Used to mark a field as a container
