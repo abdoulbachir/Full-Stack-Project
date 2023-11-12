@@ -42,5 +42,5 @@ jobs:
           java-version: '17'
           cache: 'maven'
 
-      - name: Build and run Unit/Integreation Tests with Maven # If we don't care about name, we can just run '- run: mvn clean install' or '- run: mvn -ntp -B verify' since there is nothing to clean
+      - name: Build and run Unit/Integration Tests with Maven # If we don't care about name, we can just run '- run: mvn clean install' or '- run: mvn -ntp -B verify' since there is nothing to clean
         run: mvn -ntp -B verify # ntp(no transfer progress): Do not display transfer process when downloading or uploading. -B(batch mode): Run in non-interactive (batch) mode (disables output color)
