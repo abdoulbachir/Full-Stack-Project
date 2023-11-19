@@ -14,12 +14,14 @@
 	<name>spring-boot-example</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
+<!--		<java.version>17</java.version>-->
+		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>17</maven.compiler.target>
 		<docker.username>bachir95</docker.username>
 		<docker.image.name>bachir.api</docker.image.name>
 		<docker.image.tag/>
-
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -182,7 +184,8 @@
 						</platforms>
 					</from>
 					<to>
-						<image>docker.io/${docker.username}/${docker.image.name}:${docker.image.tag}</image>
+						<image>docker.io/${docker.username}/${docker.image.name}:${docker.image.tag}</image> <!--Use the on below for jib package build-->
+<!--						<image>docker.io/${docker.username}/${project.artifactId}:${project.version}</image>-->
 						<tags>
 							<tag>latest</tag>
 						</tags>
