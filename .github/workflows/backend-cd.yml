@@ -19,6 +19,7 @@ jobs:
           POSTGRES_USER: bachir
           POSTGRES_PASSWORD: password
           POSTGRES_BD: customer
+        # Port to use. localhost:docker
         ports:
           - 5332:5432
         options:
