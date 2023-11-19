@@ -49,7 +49,7 @@ jobs:
         run: echo "BUILD_NUMBER=$(date '+%d.%m.%Y.%H.%M.%S')" >> $GITHUB_OUTPUT   # This is used to generate the build number and put it inside this env file GITHUB_OUTPUT
 
       - name: Build Package Push with Maven
-        run: mvn -ntp -B verify -Ddocker.image.tag=${{setps.build-number.outputs.BUILD_NUMBER}} jib:build # We're using verify because we need integration test. If not, we can use 'package'
+        run: mvn -ntp -B verify -Ddocker.image.tag=${{steps.build-number.outputs.BUILD_NUMBER}} jib:build # We're using verify because we need integration test. If not, we can use 'package'
 
       - name: Update Dockerrun.aws.json api image tag with new biuld number
         run: |
