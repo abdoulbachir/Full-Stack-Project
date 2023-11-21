@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "bachir-api",
-      "image": "bachir95/bachir.api:19.11.2023.08.12.49",
+      "image": "bachir95/bachir.api:21.11.2023.03.01.51",
       "essential": true,
       "memory": 512,
       "portMappings": [
